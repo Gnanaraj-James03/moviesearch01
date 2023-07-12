@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Search</title>
+  <link rel="website icon" type="png" href="logo.png">
+  <style>
+    
+     body {
+      font-family: Arial, sans-serif;
+      background-image: url(bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* background: radial-gradient(circle, rgb(33, 93, 223) 0%, rgb(97, 94, 226) 100%); */
+      margin: 0;
+      padding: 20px;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: 3rem;
+      color: #fff;
+    }
+
+    #searchForm {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #searchInput {
+      padding: 10px;
+      width: 300px;
+      font-size: 18px;
+    }
+
+    #results {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .movie {
+      background-color: rgba(18, 70, 104, 0.473);
+      padding: 20px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .movie:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(50, 201, 228, 0.829);
+    }
+
+    .movie h3 {
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .movie p {
+      margin: 0;
+    }
+
+    .no-results {
+      text-align: center;
+      color: #f5faf6d8;
+    }
+
+    @keyframes glowing {
+      0% { box-shadow: 0 0 5px #fff; }
+      50% { box-shadow: 0 0 20px #fff; }
+      100% { box-shadow: 0 0 5px #fff; }
+    }
+
+    .glow {
+      animation: glowing 3s ;
+    }
+    .btn{
+      position: relative;
+      display: inline-block;
+      border: none;
+      border-radius: 50px;
+      background: none;
+      padding: 25px 75px;
+      margin: 30px;
+    }
+    .btn a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 76%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgb(100, 164, 236);
+      box-shadow: 0 15px 35px rgb(96, 215, 245);
+      border-top: 1px solid rgba(33, 141, 212, 0.938);
+      border-bottom: 1px solid rgb(180, 232, 245);
+      border-radius: 30px;
+      color: #fff;
+      z-index: 1;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-decoration: none;
+      overflow: hidden;
+      text-transform: uppercase;
+      transition: all  .3s ease-in-out;
+      backdrop-filter: blur(15px);
+    }
+    .btn:hover a{
+      letter-spacing: 3px;
+    }
+    .btn a::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to left,rgba(255, 255, 255, 0.15),transparent);
+      transform: skewX(40deg) translateX(0);
+      transition: all .5s ease-out;
+    }
+    .btn:hover a::before{
+      transform: skewX(40deg) translateX(200%);
+    }
+
+    .btn01{
+      position: relative;
+      display: inline-block;
+      border: none;
+      border-radius: 50px;
+      background: none;
+      padding: 25px 75px;
+      margin: 30px;
+    }
+    .btn01 a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 76%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgb(155, 36, 36);
+      box-shadow: 0 15px 35px rgb(245, 96, 146);
+      border-top: 1px solid rgba(212, 33, 48, 0.938);
+      border-bottom: 1px solid rgb(226, 132, 132);
+      border-radius: 30px;
+      color: #fff;
+      z-index: 1;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-decoration: none;
+      overflow: hidden;
+      text-transform: uppercase;
+      transition: all  .3s ease-in-out;
+      backdrop-filter: blur(15px);
+    }
+    .btn01:hover a{
+      letter-spacing: 3px;
+    }
+    .btn01:hover a::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to left,rgba(255,255,255,.15),transparent);
+      transform: skewX(40deg) translateX(0);
+      transition: all .5s ease-out;
+    }
+    .btn01:hover a::before{
+      transform: skewX(40deg) translateX(200%);
+    }
+    #searchInput{
+       border-radius: 20px;      
+       background:#b6b5c0;
+       font-style: normal;
+       font-family: Verdana, Geneva, Tahoma, sans-serif ;
+       color:#fff;
+       outline: none;
+    }
+    .movie img {
+      width: 150px;
+      height: 225px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Movie Search</h1>
+
+  <form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Enter a movie title">
+    <button class="btn" type="submit"><a>Search</a></button>
+    <button class="btn01" id="resetButton" onclick="resetPage()"><a>Reset</a></button>
+  </form>
+
+  <div id="results"></div>
+
+  <script src="index01.js"></script>
+</body>
+</html>
